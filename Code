@@ -1,0 +1,67 @@
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
+
+# Sample data generation (replace this with your city data)
+data = {
+    'Area': ['Downtown', 'Suburb1', 'Suburb2', 'Industrial', 'Park'],
+    'Population': [50000, 120000, 80000, 30000, 10000],
+    'Demographics': [
+        {'Youth': 20000, 'Adults': 25000, 'Seniors': 5000},
+        {'Youth': 40000, 'Adults': 70000, 'Seniors': 10000},
+        {'Youth': 30000, 'Adults': 40000, 'Seniors': 10000},
+        {'Youth': 5000, 'Adults': 20000, 'Seniors': 5000},
+        {'Youth': 2000, 'Adults': 6000, 'Seniors': 2000}
+    ],
+    'TrafficFlow': [
+        [1000, 2000, 3000, 4000, 5000],
+        [800, 1800, 2500, 3800, 4200],
+        [1200, 2400, 3600, 4500, 5500],
+        [500, 1500, 2000, 3000, 4000],
+        [200, 600, 800, 1200, 1500]
+    ]
+}
+
+# Convert data to DataFrame
+df = pd.DataFrame(data)
+
+# Heatmap for population density
+heatmap_fig = px.density_heatmap(
+    df, 
+    x='Area', 
+    y='Population', 
+    title='Population Density by Area', 
+    labels={'Population': 'Population Count'},
+    color_continuous_scale='Viridis'
+)
+
+# Bar chart for demographic distribution
+areas = data['Area']
+demographics = pd.DataFrame(data['Demographics'])
+demographics['Area'] = areas
+bar_fig = px.bar(
+    demographics.melt(id_vars=['Area'], var_name='Group', value_name='Count'),
+    x='Area', 
+    y='Count', 
+    color='Group', 
+    barmode='group',
+    title='Demographic Distribution by Area'
+)
+
+# Line chart for traffic trends
+traffic_data = pd.DataFrame(data['TrafficFlow'], columns=['Morning', 'Noon', 'Afternoon', 'Evening', 'Night'])
+traffic_data['Area'] = areas
+line_fig = px.line(
+    traffic_data.melt(id_vars=['Area'], var_name='Time', value_name='Traffic Count'),
+    x='Time', 
+    y='Traffic Count', 
+    color='Area', 
+    title='Traffic Flow Trends by Time of Day'
+)
+
+# Display the plots
+heatmap_fig.show()
+bar_fig.show()
+line_fig.show()
+
+# Note: Replace the sample data with your actual city dataset for better insights.
