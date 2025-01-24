@@ -1,4 +1,9 @@
 # MetroVision
+# Statistics about Urban cities
+In England, both rural and urban areas have seen an increase in overall population between 2011 and 2019. Rural population increased by 5.2% and urban by 6.2%. Within rural areas, the greatest rate of population increase was in rural town and fringe areas (5.7%). Within urban areas it was in urban major conurbations (6.9%). In 2019, 56.3 million people lived in urban areas (82.9% of England’s population) and 9.6 million in rural areas (17.1%).
+
+In total 11 city regions had over 27 million residents in 2015, over 40% of the total UK population of 65 million. Population projections from 2015 to 2025 show city regions have a percentage growth rate of 7.6% compared to the UK growth rate of 6.7%.
+
 # What is the purpose of this program?  
 The main objective with this code is to visualise complex city data to facilitate better decision-making by city planners, policymakers, and stakeholders.
 
